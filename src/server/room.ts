@@ -112,12 +112,12 @@ class Room{
             if (user.state === "rise"){
                 return
             }
-            user.coords.y-=10;
+            user.coords.y-=4;
         });
 
         
         this.pipes.forEach((pipe) => {
-            pipe.coords.x-=8;
+            pipe.coords.x-=4;
         });
 
         this.io.to(this.id).emit("on:room-update",{
@@ -158,27 +158,37 @@ class Room{
             return;
         }
 
+        let ret = false;
         if (pipe.state === "straight"){
             this.users.forEach((user) => {
+                if(ret){
+                    return;
+                }
                 if (user.coords.y < pipe.height){
                     let winner_name = this.users.find((u) => u !== user)?.username;
                     let message = winner_name ? `${winner_name} Wins !` : "You Suck !";
                     this.io.to(this.id).emit("on:game-over", message);
-                    return this.deleteRoom();
+                    ret = true;
                 }
             });
+
         }
         else{
             this.users.forEach((user) => {
+                if(ret){
+                    return;
+                }
                 if (user.coords.y > (940-pipe.height)){
                     let winner_name = this.users.find((u) => u !== user)?.username;
                     let message = winner_name ? `${winner_name} Wins !` : "You Suck !";
                     this.io.to(this.id).emit("on:game-over", message);
-                    return this.deleteRoom();
+                    ret = true;
                 }
             });
         }
-
+        if (ret){
+            return this.deleteRoom();
+        }
     }
 }
 
