@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flappy Bird</title>
+    <link rel="icon" href="images/bird_1.png">
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+  <body class="bg-cyan-50 absolute m-0 h-full w-full flex justify-center">
+
+    <nav class="bg-blue-400 absolute left-0 h-1/4 w-full flex flex-col justify-center items-center overflow-hidden shadow-lg">
+      <h1 class="mb-8 font-sans text-white">Your Name</h1>
+      <input type="text" id="username" class="m-3 h-1/5 w-1/5 rounded-md border-0">
+      <p id="username-error" class="text-red-500"></p>
+    </nav>
+
+    <section id="box" class="bg-cyan-100 absolute top-1/4 p-3 m-32 w-80 flex flex-col justify-center items-center rounded-2xl shadow-inner">
+      <h1 class="mb-12 font-sans text-green-400">Select Mode</h1>
+      <button id="single-player" class="mb-6 h-12 w-24 rounded-md border-0 hover:bg-red-400 bg-red-300 text-white">Single Player</button>
+      <input type="text" id="invite-name" class="m-3 h-5 w-24 rounded-md border-0">
+      <button id="invite-player" class="mb-3 h-12 w-24 rounded-md border-0 hover:bg-red-400 bg-red-300 text-white">Invite Player</button>
+      <p id="invite-error" class="text-red-500"></p>
+    </section>
+
+    <div id="invite-box" class="flex flex-col items-center fixed rounded-lg w-80 h-1/4 left-0 -translate-x-full bg-emerald-100 z-10 transition-all duration-300 ease-in-out">
+      <button id="invite-close" class="absolute rounded-sm top-0 right-0 border-0 hover:bg-red-600 bg-red-400 text-white">
+        X
+      </button>
+      <h3 id="invite-text" class="absolute top-5 font-sans text-blue-400"></h3>
+      <button id="invite-join"  class="absolute bottom-10 w-1/3 h-1/6 border-0 rounded-md bg-green-500 text-white">
+        Join
+      </button>
+    </div>
+    
+  </body>
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="script.js" type="module" defer></script>
+</html>
