@@ -25,7 +25,7 @@ let inviteFrom;
 if (username)
     socket.emit("set-name", username);
 else
-    usernameError.textContent = "Please enter a name !";
+    usernameError.textContent = "Please enter a name!";
 
 usernameinput.addEventListener("input", (e) => {
     localStorage.setItem("username", e.target.value);
@@ -34,7 +34,7 @@ usernameinput.addEventListener("input", (e) => {
     }
     timeoutId = setTimeout(() => {
         if (!e.target.value){
-            usernameError.textContent = "Name cannot be empty !";
+            usernameError.textContent = "Name cannot be empty!";
             return;
         }
         socket.emit("set-name", e.target.value);
@@ -44,7 +44,7 @@ usernameinput.addEventListener("input", (e) => {
 });
 
 socket.on("on:name-taken",()=>{
-    usernameError.textContent = "Name is already taken !";
+    usernameError.textContent = "Name is already taken!";
 });
 
 singlePlayer.addEventListener("click",()=>{
@@ -66,12 +66,16 @@ inviteJoin.addEventListener("click", () => {
 
 
 invitePlayer.addEventListener("click", () => {
+    if (!username){
+        error(inviteError, "You must set a name first!");
+        return;
+    }
     if (username == inviteName.value){
-        error(inviteError, "You cannot invite yourself !");
+        error(inviteError, "You cannot invite yourself!");
         return;
     }
     if (!inviteName.value){
-        error(inviteError, "Please enter a name !");
+        error(inviteError, "Please enter a name!");
         return;
     }
     let roomId = Date.now().toString(36);

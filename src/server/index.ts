@@ -35,6 +35,10 @@ io.on('connection', async (socket) => {
     });
 
     socket.on("invite-player", (data:{ roomId: string, to:string}) => {
+        if (!name){
+            socket.emit("on:invite-failed", "You must set a name first!");
+            return;
+        }
         if (name == data.to){
             socket.emit("on:invite-failed", "You cannot invite yourself!");
             return;

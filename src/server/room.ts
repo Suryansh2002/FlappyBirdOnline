@@ -20,7 +20,7 @@ class User{
     }
 
     async fly(){
-        const maxCounter = 50;
+        const maxCounter = 60;
         this.state = "rise";
 
         for(let i = 1; i <= maxCounter; i++){
@@ -112,12 +112,12 @@ class Room{
             if (user.state === "rise"){
                 return
             }
-            user.coords.y-=4;
+            user.coords.y-=7;
         });
 
         
         this.pipes.forEach((pipe) => {
-            pipe.coords.x-=4;
+            pipe.coords.x-=6;
         });
 
         this.io.to(this.id).emit("on:room-update",{
@@ -227,7 +227,7 @@ setInterval(()=>{
     Object.values(rooms).forEach((room) => {
         room.refresh();
     });
-},5);
+},10);
 
 export {rooms,handleRoom}
 
