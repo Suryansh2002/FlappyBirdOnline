@@ -1,10 +1,12 @@
 import express from 'express';
+import path from 'path';
 import {createServer} from 'http';
 import {Server, Socket} from 'socket.io';
 import {rooms,handleRoom} from './room';
 
 const port = process.env.PORT || 80;
-const clientDir = __dirname.split("\\").slice(0,-1).join('\\')+"\\client";
+
+const clientDir = path.resolve(__dirname, '..', 'client');
 console.log(clientDir);
 
 const app = express();
@@ -102,5 +104,5 @@ app.use((req, res, next) => {
 })
 
 server.listen(port, () => {
-    console.log(`Server is running at prot : ${port}`);
+    console.log(`Server is running at port : ${port}`);
 });
