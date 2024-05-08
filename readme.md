@@ -10,8 +10,6 @@ Simple Concept: Invite your friend and play a match, First to crash loses.
 
 2) Do `npm install`. This will install the dependencies
 
-3) Do `npm install ts-node -g` so you have terminal ts-node
-
 4) Do `npm run start`
 
 
