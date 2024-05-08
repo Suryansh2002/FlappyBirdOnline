@@ -3,8 +3,7 @@ import {createServer} from 'http';
 import {Server, Socket} from 'socket.io';
 import {rooms,handleRoom} from './room';
 
-const host = "localhost";
-const port = 3000;
+const port = process.env.port || 80;
 const clientDir = __dirname.split("\\").slice(0,-1).join('\\')+"\\client";
 
 const app = express();
@@ -101,6 +100,6 @@ app.use((req, res, next) => {
     express.static(clientDir)(req, res, next);
 })
 
-server.listen(port, host, () => {
-    console.log(`Server is running at http://${host}:${port}`);
+server.listen(port, () => {
+    console.log(`Server is running at prot : ${port}`);
 });
