@@ -3,7 +3,7 @@ import {createServer} from 'http';
 import {Server, Socket} from 'socket.io';
 import {rooms,handleRoom} from './room';
 
-const port = process.env.port || 80;
+const port = process.env.PORT || 80;
 const clientDir = __dirname.split("\\").slice(0,-1).join('\\')+"\\client";
 
 const app = express();
