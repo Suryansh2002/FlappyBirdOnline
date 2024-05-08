@@ -5,6 +5,7 @@ import {rooms,handleRoom} from './room';
 
 const port = process.env.PORT || 80;
 const clientDir = __dirname.split("\\").slice(0,-1).join('\\')+"\\client";
+console.log(clientDir);
 
 const app = express();
 const server = createServer(app);
@@ -64,11 +65,11 @@ io.on('connection', async (socket) => {
 
 
 app.get("/", (req, res) => {
-    res.sendFile(clientDir+"/index.html");
+    res.sendFile("index.html", {root: clientDir});
 });
 
 app.get("/game", (req, res) => {
-    res.sendFile(clientDir+"/game/index.html");
+    res.sendFile("game/index.html", {root: clientDir});
 });
 
 
