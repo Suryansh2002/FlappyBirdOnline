@@ -6,10 +6,10 @@ Simple Concept: Invite your friend and play a match, First to crash loses.
 
 ## Running Locally
 
-1) Clone/Download the repository
+1. Clone/Download the repository
 
-2) Do `npm install`. This will install the dependencies
+2. Do `npm install`. This will install the dependencies
 
-4) Do `npm run start`
+3. Do `npm run start`
 
-
+## hello hello
